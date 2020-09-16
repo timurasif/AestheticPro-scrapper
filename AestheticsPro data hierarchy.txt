@@ -1,0 +1,51 @@
+ 				         [Site Name]_data
+                                                 |
+						 |
+	_____________________________________________________________________________________
+	|			      |                           |                         |
+        |                             |                           |			    |
+Client_Details.csv             Client_Notes.csv        Client_Appointments.csv      Client_Attachments
+											    |
+											    |
+										  _______________________
+										  |			|
+										  |			|
+									  Display_Pictures	 Other_Attachments
+													|
+													|
+											_________________________________ 
+											|		|		|
+										  [Client_ID]	   [Client_ID]	      .....
+
+
+
+[Site Name]_data: 	  Main folder which should have all the data. In case of current site, it would be 'Aesthetic Pro_data', in case of Mindbody, it would be 
+		  	  'Mindbody_data' and so on.
+
+Client_Details.csv: 	  File with Client ID, all patient demographgic details and perhaps a flag whether Display Picture exists or not.
+		          No need for Dp's path saving now, since we know all DPs would be in Client_Attachments/Display_Pictures named in manner 
+			  [ClientID_Display Picture]. If flag is True, go to Attachments/Display Pictures/[ClientID_Display Picure].jpg and upload it to AR,
+			  if false, skip the upload.
+
+Client_Notes.csv:   	  Client_ID from Client_Details and a Note_Text column for all the text. 1 to many relation between clients and notes. If a client
+		   	  has 4 notes. Insert all one by one making 4 rows.
+
+
+Client_Appointments.csv:  Client_ID from Client_Details.csv and all columns for Appointments from site to be scraped. 1 to many relation between clients and 
+			  appointments. If a client has 3 appointments. Insert all one by one making 3 rows in this csv.
+			  NOTE: This should have only future appointments.
+
+Client_Attachments:       A folder where all attachments would go
+
+
+Display_Pitctures:	  A folder where all display pictures would go named in manner [ClientID_Display Picure]. So if DP flag is True, come here, get respective 
+			  picture and upload it to AR.
+
+Other_Attachments:	  A folder where all attachments except Display Picture would go. This folder would have sub-folders only for those clients whose documents
+			  exist, these sub-folders would be named after [Client_ID], so when uploading documents for a record we simply need to check if a folder 
+			  named same as Client_ID exists in Client_Attachments/Other_Attachments, if it does, upload all files to AR, if not, no documents to 
+			  be uploaded for that client.
+
+[Client_ID] folder:	  This folder should contain all attachments except the Display Picture. Could be photos, could be consent forms in pdf/docx, could be anything
+			  else that's discussed to be moved. All documents/photos would be placed in this folder a particular client after renaming as per rules if
+			  need be.
